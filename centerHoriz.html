@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>文本水平居中布局</title>
+</head>
+<style>
+    .parent{
+    	width: 500px;
+		height: 120px;
+		border: 1px #000 solid;
+		margin-bottom: 30px;
+    }
+    /* text-align: center文本水平居中 */
+	.one{
+		text-align: center;
+	}
+	/* display:table; 文本/盒子 水平居中 */
+	.two > span{
+		display:table;
+		margin:0 auto;
+	}
+	.two > div{
+		display:table;
+		margin:0 auto;
+	}
+	/* 指定宽度  margin: 0 auto;盒子水平居中 */
+	.three > div{
+        width: 200px;
+        margin: 0 auto;
+        background-color: #f6e136;
+	}
+	/* position: absolute;水平居中 */
+	.four{
+		position: relative;
+	}
+	.four > div{
+        position: absolute;
+        left: 50%;
+        transform: translate(-50%);
+        background-color: #91f6d6;
+	}
+	/* flex+justify-content: center;水平居中 */
+	.five{
+		display: flex;
+        justify-content: center;
+	}
+	/* 父flex + 子margin: 0 auto;水平居中 */
+	.six{
+		display: flex;
+	}
+	.six > div{
+		margin: 0 auto;
+	}
+</style>
+<body>
+    <p>
+       水平居中的页面布局中最为常见的一种布局形式，多出现于标题，以及内容区域的组织形式
+    </p>
+	<div class="one parent">
+         使用父容器text-align: center水平居中
+	</div>
+	<div class="two parent">
+		<span>文字使用display:table;水平居中</span>
+		<div>盒子使用display:table;水平居中</div>
+	</div>
+	<div class="three parent">
+		<div>子盒子指定宽度，使用margin: 0 auto;水平居中</div>
+	</div>
+	<div class="four parent">
+		<div>绝对定位水平居中</div>
+	</div>
+	<div class="five parent">
+		<div>使用flex+justify-content: center;水平居中</div>
+	</div>
+	<div class="six parent">
+		<div>使用 父flex + 子margin: 0 auto;水平居中</div>
+	</div>
+</body>
+</html>
