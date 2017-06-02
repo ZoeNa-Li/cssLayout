@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>多列布局</title>
+	<style>
+		.parent{
+			width: 100%;
+			height: 150px;
+			margin-bottom: 25px;
+			border: 1px #000 solid;
+		}
+/* start：左侧等宽，右侧自适应 */
+		/* float+margin */
+		.one-left{
+			width: 200px;
+			height: 100%;
+			background-color: red;
+			float: left;
+		}
+		.one-right-wrapper{
+			width: 100%;
+			height: 100%;
+			margin-left: -200px;
+			float: right;
+		}
+		.one-right{
+			height: 100%;
+			background-color: blue;
+			margin-left: 200px;
+		}
+		/* float + overflow */
+		.two-left{
+			width: 200px;
+			height: 100%;
+			float: left;
+			background-color: red;
+		}
+		.two-right{
+			height: 100%;
+			overflow: hidden;
+			background-color: blue;
+		}
+		/* flex */
+		.three{
+			display: flex;
+		}
+		.three-left{
+			width: 200px;
+			background-color: red;
+		}
+		.three-right{
+			flex: 1;
+			background-color: blue;
+		}
+/* end：左侧等宽，右侧自适应 */
+
+/*start: 两列定宽，一列自适应 */
+		/* float+margin */
+        .four-left,.four-center{
+        	width: 200px;
+        	height: 100%;
+        	float: left;
+            background-color: red;
+        }
+        .four-center{
+        	 background-color: yellow;
+        }
+        .four-right{
+        	margin-left: 400px;
+        	height: 100%;
+        	background-color: blue;
+        }
+        /* float + overflow */
+       .five-left,.five-center{
+        	width: 200px;
+        	height: 100%;
+        	float: left;
+            background-color: red;
+        }
+        .five-center{
+        	background-color: yellow;
+        }
+        .five-right{
+        	height: 100%;
+			overflow: hidden;
+			background-color: blue;
+        }
+        /* flex */
+        .six{
+        	display: flex;
+        }
+        .six-left,.six-center{
+        	width: 200px;
+        	height: 100%;
+        	background-color: red;
+        }
+        .six-center{
+        	background-color: yellow;
+        }
+        .six-right{
+        	flex: 1;
+        	background-color: blue;
+        }
+        /* table */
+        .seven{
+        	display: table;
+        	table-layout: fixed;
+        }
+        .seven-left,.seven-center,.seven-right{
+        	display: table-cell;
+        }
+        .seven-left,.seven-center{
+        	width: 200px;
+        	height: 100%;
+        	background-color: red;
+        }
+        .seven-center{
+        	background-color: yellow;
+        }
+        .seven-right{
+        	background-color: blue;
+        }
+/* end: 两列定宽，一列自适应 */
+
+/* start：两侧定宽，中间自适应 */
+    /* float + margin */
+    .eight-left{
+    	width: 200px;
+    	height: 100%;
+    	float: left;
+    	background-color: red;
+    }
+    .eight-right{
+    	width: 200px;
+    	height: 100%;
+    	float: right;
+    	background-color: yellow;
+    }
+    .eight-center{
+    	width: 100%;
+    	height: 100%;
+    	float: left;
+    	margin-right: -400px;
+    	background-color: blue;
+    }
+    .nine{
+    	display: flex;
+    }
+    .nine-left, .nine-right{
+        width: 200px;
+        height: 100%;
+        background-color: red;
+    }
+    .nine-center{
+    	flex: 1;
+    	height: 100%;
+    	background-color: blue;
+    }
+ /* end：两侧定宽，中间自适应 */
+
+/* start：一列不定宽，一列自适应 */
+   .ten{
+   	display: flex;
+   }
+   .ten-left{
+   	height: 100%;
+   	width: 20%;
+   	background-color: red;
+   }
+   .ten-right{
+   	flex: 1;
+   	height: 100%;
+   	background-color: blue;
+   }
+   .eleven-left{
+   	width: 20%;
+   	height: 100%;
+   	float: left;
+   	background-color: red;
+   }
+   .eleven-right{
+   	height: 100%;
+   	background-color: blue;
+   	overflow: hidden;
+   }
+/* end：一列不定宽，一列自适应 */
+
+/* 多列等宽布局 */
+    .twelve{
+    	display: flex;
+    }
+    .twelve-one,.twelve-two{
+    	flex: 1;
+    	background-color: red;
+    }
+    .twelve-two{
+    	background-color: blue;
+    }
+	</style>
+</head>
+<body>
+<!-- 左侧等宽，右侧自适应 -->
+	<p>左侧等宽，右侧自适应。适用于定宽的一侧常为导航，自适应的一侧为内容的布局</p>
+	<hr>
+	<div class="one parent">
+		<div class="one-left">左侧float:left</div>
+		<div class="one-right-wrapper">
+			<div class="one-right">防止IE6的3px bug,右侧外包float:right;margin-left:-左侧框; 内部：margin-left: 左侧宽;</div>
+		</div>
+	</div>
+	<div class="two parent">
+		<div class="two-left">左侧float: left;</div>
+		<div class="two-right">右侧overflow:hidden;</div>
+	</div>
+	<div class="three parent">
+		<div class="three-left">父盒子display: flex;左侧定宽</div>
+		<div class="three-right">右侧flex: 1;</div>
+	</div>
+	<p>右侧等宽，左侧自适应。类似于左侧等宽，右侧自适应</p>
+	<hr>
+<!-- 两列定宽，一列自适应 -->
+	<p>两列定宽，一列自适应</p>
+	<hr>
+	<div class="four parent">
+		<div class="four-left">左侧float:left</div>
+		<div class="four-center">中间float:left</div>
+		<div class="four-right">右侧:margin-left:左宽+右宽</div>
+	</div>
+    <div class="five parent">
+    	<div class="five-left">左侧float:left</div>
+    	<div class="five-center">中间float:left</div>
+    	<div class="five-right">右侧: overflow:hidden</div>
+    </div>
+    <div class="six parent">
+    	<div class="six-left">定宽</div>
+    	<div class="six-center">固定宽度</div>
+    	<div class="six-right">父,display:flex; 右侧,flex:1</div>
+    </div>
+    <div class="seven parent">
+    	<div class="seven-left">
+    	   <p>父，display: table;table-layout: fixed;</p>
+    	   <p>左，display: table-cell; width:定宽</p>
+    	</div>
+    	<div class="seven-center">中间，display: table-cell; width:定宽</div>
+    	<div class="seven-right">右侧，display: table-cell;</div>
+    </div>
+ <!-- 两侧定宽，中间自适应 -->
+    <p>两侧定宽，中间自适应</p>
+    <hr>
+    <div class="eight parent">
+    	<div class="eight-left">左浮动</div>
+    	<div class="eight-center">左浮动，margin-right:-2*右盒子宽</div>
+    	<div class="eight-right">右浮动</div>
+    </div>
+    <div class="nine parent">
+    	<div class="nine-left">左侧定宽</div>
+    	<div class="nine-center">
+    		<p>父，display:flex</p>
+    		<p>中间，flex:1</p>
+    	</div>
+    	<div class="nine-right">右侧定宽</div>
+    </div>
+ <!-- 一列不定宽，一列自适应 -->
+    <p>一列不定宽，一列自适应</p>
+    <hr>
+    <div class="ten parent">
+    	<div class="ten-left"></div>
+    	<div class="ten-right">
+    		<p>父，display:flex</p>
+    		<p>子，flex:1</p>
+    	</div>
+    </div>
+    <div class="eleven parent">
+    	<div class="eleven-left">左浮</div>
+    	<div class="eleven-right">右overflow:hidden</div>
+    </div>
+ <!-- 多列等宽 -->
+    <p>多列等宽</p>
+    <hr>
+    <div class="twelve parent">
+ 	    <div class="twelve-one">
+ 	    	<p>父，dispaly:flex; 子，flex:1;</p>
+ 	    </div>
+ 	    <div class="twelve-two"></div>
+ 	    <div class="twelve-one"></div>
+ 	    <div class="twelve-two"></div>
+ 	    <div class="twelve-one"></div>
+    </div>
+</body>
+</html>
